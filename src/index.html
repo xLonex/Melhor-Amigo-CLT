@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Melhor Amigo do CLT</title>
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body
+    class="h-full bg-gray-50 dark:bg-slate-900 transition-colors duration-300"
+  >
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto p-6">
+      <div
+        class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
+      >
+        <h2 class="text-2xl font-bold text-blue-600 dark:text-white mb-6">
+          Cálculo de Rescisão Trabalhista
+        </h2>
+        <form>
+          <!---------- Data de Admissão e Rescisão ---------->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <!-- Data de admissão -->
+            <div class="group mt-4">
+              <div class="relative">
+                <label
+                  for="admissao"
+                  class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+                >
+                  Data de Contratação
+                  <span
+                    class="inline-flex ml-1 cursor-help group/tooltip relative"
+                  >
+                    <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        class="fill-current opacity-25"
+                      />
+                      <text
+                        x="8"
+                        y="16"
+                        class="fill-current text-[10px] font-bold"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                    <span
+                      class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
+                    >
+                      Data em que o funcionário começou a trabalhar na empresa.
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <input
+                type="date"
+                id="admissao"
+                class="w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+                placeholder="dd/mm/aaaa"
+              />
+            </div>
+
+            <!-- Data de Rescisão -->
+            <div class="group mt-4">
+              <div class="relative">
+                <label
+                  for="rescisao"
+                  class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+                >
+                  Data de Rescisão
+                  <span
+                    class="inline-flex ml-1 cursor-help group/tooltip relative"
+                  >
+                    <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        class="fill-current opacity-25"
+                      />
+                      <text
+                        x="8"
+                        y="16"
+                        class="fill-current text-[10px] font-bold"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                    <span
+                      class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
+                    >
+                      Último dia trabalhado.
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <input
+                type="date"
+                id="rescisao"
+                class="w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white invalid:border-red-500 invalid:dark:border-red-400"
+                placeholder="dd/mm/aaaa"
+              />
+            </div>
+          </div>
+
+          <!------------ Motivo da Rescisão e Salário Bruto ------------>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <!-- Motivo da Rescisão -->
+            <div class="group mt-6">
+              <div class="relative">
+                <label
+                  for="motivo"
+                  class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+                >
+                  Motivo
+                  <span
+                    class="inline-flex ml-1 cursor-help group/tooltip relative"
+                  >
+                    <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        class="fill-current opacity-25"
+                      />
+                      <text
+                        x="8"
+                        y="16"
+                        class="fill-current text-[10px] font-bold"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                    <span
+                      class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
+                    >
+                      Tipo de desligamento que afeta os direitos trabalhistas
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <select
+                id="motivo"
+                class="mt-1 block w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+              >
+                <option value="">Selecione o motivo</option>
+                <option value="demissao_comum_acordo">
+                  Demissão de comum acordo
+                </option>
+                <option value="dispensa_sem_justa_causa">
+                  Dispensa sem justa causa
+                </option>
+                <option value="dispensa_com_justa_causa">
+                  Dispensa com justa causa
+                </option>
+                <option value="pedido_demissao">Pedido de demissão</option>
+                <option value="encerramento_contrato_experiencia_prazo">
+                  Encerramento de contrato de experiência no prazo
+                </option>
+                <option value="encerramento_contrato_experiencia_antes_prazo">
+                  Encerramento de contrato de experiência antes do prazo
+                </option>
+                <option value="aposentadoria">
+                  Aposentadoria do empregado
+                </option>
+                <option value="falecimento_empregador">
+                  Falecimento do empregador
+                </option>
+              </select>
+            </div>
+            <!-- Salário bruto-->
+            <div class="group mt-4">
+              <div class="relative">
+                <label
+                  for="salario"
+                  class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+                >
+                  Salário Bruto
+                  <span
+                    class="inline-flex ml-1 cursor-help group/tooltip relative"
+                  >
+                    <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        class="fill-current opacity-25"
+                      />
+                      <text
+                        x="8"
+                        y="16"
+                        class="fill-current text-[10px] font-bold"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                    <span
+                      class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
+                    >
+                      > Valor total do salário antes dos descontos obrigatórios
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <input
+                type="text"
+                id="salario"
+                class="w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+                placeholder="R$ 0,00"
+                inputmode="numeric"
+              />
+            </div>
+          </div>
+          <!------------ Aviso prévio e Férias adquiridas ------------>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <!-- Aviso Prévio -->
+            <div class="group mt-6">
+              <div class="relative">
+                <label
+                  for="aviso_previo"
+                  class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+                >
+                  Aviso Prévio
+                  <span
+                    class="inline-flex ml-1 cursor-help group/tooltip relative"
+                  >
+                    <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        class="fill-current opacity-25"
+                      />
+                      <text
+                        x="8"
+                        y="16"
+                        class="fill-current text-[10px] font-bold"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                    <span
+                      class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
+                    >
+                      > Se o aviso foi trabalhado, indenizado ou não cumprido
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <select
+                id="aviso_previo"
+                class="mt-1 block w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+              >
+                <option value="">Selecione o aviso prévio</option>
+                <option value="trabalhado">Trabalhado</option>
+                <option value="indenizado">Indenizado pelo empregador</option>
+                <option value="nao_cumprido">
+                  Não cumprido pelo empregado
+                </option>
+                <option value="dispensado">Dispensado</option>
+              </select>
+            </div>
+
+            <!-- Férias Adquiridas -->
+            <div class="group mt-6">
+              <div class="relative">
+                <label
+                  for="ferias_adquiridas"
+                  class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+                >
+                  Possui férias adquiridas no ano anterior?
+                  <span
+                    class="inline-flex ml-1 cursor-help group/tooltip relative"
+                  >
+                    <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        class="fill-current opacity-25"
+                      />
+                      <text
+                        x="8"
+                        y="16"
+                        class="fill-current text-[10px] font-bold"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                    <span
+                      class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
+                    >
+                      > Férias não usufruídas do período anterior
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <select
+                id="ferias_adquiridas"
+                class="mt-1 block w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+              >
+                <option value="">Selecione</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+              </select>
+            </div>
+          </div>
+
+          <!---------- Saldo FGTS e Número de Dependentes ---------->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+            <!-- Saldo FGTS -->
+            <div class="group mt-6">
+              <div class="relative">
+                <label
+                  for="saldo_fgts"
+                  class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+                >
+                  Saldo FGTS antes da contratação
+                  <span
+                    class="inline-flex ml-1 cursor-help group/tooltip relative"
+                  >
+                    <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        class="fill-current opacity-25"
+                      />
+                      <text
+                        x="8"
+                        y="16"
+                        class="fill-current text-[10px] font-bold"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                    <span
+                      class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
+                    >
+                      > Valor acumulado antes desse contrato (se aplicável)
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <input
+                type="text"
+                id="saldo_fgts"
+                class="mt-1 block w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+                placeholder="R$ 0,00"
+                inputmode="numeric"
+              />
+            </div>
+
+            <!-- Número de Dependentes -->
+            <div class="group mt-6">
+              <div class="relative">
+                <label
+                  for="dependentes"
+                  class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+                >
+                  Número de Dependentes
+                  <span
+                    class="inline-flex ml-1 cursor-help group/tooltip relative"
+                  >
+                    <svg class="w-4 h-4 text-blue-400" viewBox="0 0 24 24">
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        class="fill-current opacity-25"
+                      />
+                      <text
+                        x="8"
+                        y="16"
+                        class="fill-current text-[10px] font-bold"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                    <span
+                      class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
+                    >
+                      > Filhos ou outros dependentes legais declarados
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <input
+                type="number"
+                id="dependentes"
+                class="mt-1 block w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+                placeholder="0"
+              />
+            </div>
+          </div>
+
+          <!-- Botão de Calcular Rescisão -->
+          <button
+            type="submit"
+            class="mt-6 w-full bg-blue-800 text-white p-3 rounded-md hover:bg-blue-700"
+          >
+            Calcular Rescisão
+          </button>
+        </form>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
