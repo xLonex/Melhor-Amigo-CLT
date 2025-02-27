@@ -5,13 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Melhor Amigo do CLT</title>
     <link href="./output.css" rel="stylesheet" />
+    <style>
+      [id^="box-"] {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+    </style>
   </head>
   <body
     class="h-full bg-gray-50 dark:bg-slate-900 transition-colors duration-300"
   >
-    <!-- Conteúdo Principal -->
+    <!-- Input de Seleção de Cálculos -->
+    <div class="container mx-auto p-6 max-w-2xl">
+      <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg">
+        <label
+          for="tipoCalculo"
+          class="block text-sm font-medium text-blue-600 dark:text-white mb-2"
+        >
+          Selecione o tipo de cálculo:
+        </label>
+        <select
+          id="tipoCalculo"
+          class="w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+        >
+          <option value="rescisao">Cálculo de Rescisão</option>
+          <option value="plr">Cálculo de PLR</option>
+          <option value="insalubridade">Cálculo de Insalubridade</option>
+          <option value="banco_horas">Cálculo de Banco de Horas</option>
+          <option value="fgts">Cálculo de FGTS</option>
+          <option value="decimo_terceiro">Cálculo de 13º Salário</option>
+          <option value="multa_fgts">
+            Cálculo de Multa Rescisória do FGTS
+          </option>
+          <option value="aviso_previo">Cálculo de Aviso Prévio</option>
+          <option value="insalubridade_periculosidade">
+            Cálculo de Insalubridade e Periculosidade
+          </option>
+        </select>
+      </div>
+    </div>
+    <!-- Boxes (Calculadoras) -->
     <main class="container mx-auto p-6">
+      <!-- Calculo de rescisão -->
       <div
+        id="box-rescisao"
         class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
       >
         <h2 class="text-2xl font-bold text-blue-600 dark:text-white mb-6">
@@ -136,7 +173,7 @@
                     <span
                       class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
                     >
-                      Tipo de desligamento que afeta os direitos trabalhistas
+                      O motivo do desligamento do funcionário na empresa
                     </span>
                   </span>
                 </label>
@@ -199,7 +236,7 @@
                     <span
                       class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
                     >
-                      > Valor total do salário antes dos descontos obrigatórios
+                      Valor total do salário antes dos descontos obrigatórios
                     </span>
                   </span>
                 </label>
@@ -244,7 +281,7 @@
                     <span
                       class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
                     >
-                      > Se o aviso foi trabalhado, indenizado ou não cumprido
+                      Se o aviso foi trabalhado, indenizado ou não cumprido
                     </span>
                   </span>
                 </label>
@@ -254,7 +291,7 @@
                 class="mt-1 block w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
               >
                 <option value="">Selecione o aviso prévio</option>
-                <option value="trabalhado">Trabalhado</option>
+                <option value="trabalhado">Cumprido</option>
                 <option value="indenizado">Indenizado pelo empregador</option>
                 <option value="nao_cumprido">
                   Não cumprido pelo empregado
@@ -292,7 +329,7 @@
                     <span
                       class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
                     >
-                      > Férias não usufruídas do período anterior
+                      Férias que não foram usadas no ano anterior
                     </span>
                   </span>
                 </label>
@@ -339,7 +376,7 @@
                     <span
                       class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
                     >
-                      > Valor acumulado antes desse contrato (se aplicável)
+                      Valor do FGTS acumulado antes desse contrato
                     </span>
                   </span>
                 </label>
@@ -382,7 +419,7 @@
                     <span
                       class="absolute hidden group-hover/tooltip:block left-full top-0 ml-2 w-48 bg-white !bg-opacity-100 dark:bg-slate-700 dark:!bg-opacity-100 p-2 rounded-lg shadow-lg text-sm border border-gray-200 dark:border-slate-600 z-50"
                     >
-                      > Filhos ou outros dependentes legais declarados
+                      Quantidad de filhos declarados
                     </span>
                   </span>
                 </label>
@@ -405,6 +442,159 @@
           </button>
         </form>
       </div>
+
+      <!-- Cálculo de INSALUBRIDADE -->
+      <div
+        id="box-insalubridade"
+        class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
+      >
+        <h2 class="text-2xl font-bold text-blue-600 dark:text-white mb-6">
+          Cálculo de Insalubridade
+        </h2>
+        <form>
+          <!-- Conteúdo do formulário de INSALUBRIDADE -->
+        </form>
+      </div>
+      <!-- FIM DO CÁLCULO DE INSALUBRIDADE -->
+
+      <!-- Cálculo de banco de horas -->
+      <div
+        id="box-banco_horas"
+        class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
+      >
+        <h2 class="text-2xl font-bold text-blue-600 dark:text-white mb-6">
+          Cálculo de Banco de Horas
+        </h2>
+        <form>
+          <!-- Conteúdo do formulário de BANCO DE HORAS -->
+        </form>
+      </div>
+      <!-- FIM DO CÁLCULO DE BANCO DE HORAS -->
+
+      <!-- Cálculo de FGTS -->
+      <div
+        id="box-fgts"
+        class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
+      >
+        <h2 class="text-2xl font-bold text-blue-600 dark:text-white mb-6">
+          Cálculo de FGTS
+        </h2>
+        <form>
+          <!-- Conteúdo do formulário de FGTS -->
+        </form>
+      </div>
+      <!-- FIM DO CÁLCULO FGTS -->
+
+      <!-- Cálculo de 13º Salário -->
+      <div
+        id="box-decimo_terceiro"
+        class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
+      >
+        <h2 class="text-2xl font-bold text-blue-600 dark:text-white mb-6">
+          Cálculo de 13º Salário
+        </h2>
+        <form>
+          <!-- Salário Bruto -->
+          <div class="group mt-4">
+            <label
+              for="salario_bruto"
+              class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+            >
+              Salário Bruto
+            </label>
+            <input
+              type="text"
+              id="salario_bruto"
+              class="w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+              placeholder="R$ 0,00"
+              inputmode="numeric"
+            />
+          </div>
+
+          <!-- Número de Meses Trabalhados -->
+          <div class="group mt-6">
+            <label
+              for="meses_trabalhados"
+              class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+            >
+              Número de Meses Trabalhados
+            </label>
+            <input
+              type="number"
+              id="meses_trabalhados"
+              class="w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+              placeholder="1 a 12"
+              min="1"
+              max="12"
+            />
+          </div>
+
+          <!-- Parcela -->
+          <div class="group mt-6">
+            <label
+              for="parcela"
+              class="block text-sm font-medium text-blue-600 dark:text-white mb-1"
+            >
+              Parcela
+            </label>
+            <select
+              id="parcela"
+              class="w-full p-2 border border-blue-600 dark:border-blue-950 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-blue-950 dark:text-white"
+            >
+              <option value="unica">Única</option>
+              <option value="primeira">Primeira</option>
+              <option value="segunda">Segunda</option>
+            </select>
+          </div>
+
+          <!-- Botão de Calcular -->
+          <button
+            type="submit"
+            class="mt-6 w-full bg-blue-800 text-white p-3 rounded-md hover:bg-blue-700"
+          >
+            Calcular 13º Salário
+          </button>
+        </form>
+        <!-- Resultado -->
+        <div id="resultado-decimo-terceiro" class="mt-6 hidden">
+          <h3 class="text-xl font-bold text-blue-600 dark:text-white mb-4">
+            Resultado
+          </h3>
+          <p class="text-lg text-blue-600 dark:text-white">
+            Valor do 13º Salário:
+            <span id="valor-decimo-terceiro" class="font-bold">R$ 0,00</span>
+          </p>
+        </div>
+      </div>
+      <!-- FIM DO CÁLCULO DE 13º SALÁRIO -->
+
+      <!-- Cálculo de Multa Rescisória do FGTS -->
+      <div
+        id="box-multa_fgts"
+        class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
+      >
+        <h2 class="text-2xl font-bold text-blue-600 dark:text-white mb-6">
+          Cálculo de Multa Rescisória do FGTS
+        </h2>
+        <form>
+          <!-- Conteúdo do formulário de Multa Rescisória do FGTS -->
+        </form>
+      </div>
+      <!-- FIM DO CÁLCULO DE MULTA RESCISÓRIA DO FGTS -->
+
+      <!-- Cálculo de Aviso Prévio -->
+      <div
+        id="box-aviso_previo"
+        class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg max-w-2xl mx-auto"
+      >
+        <h2 class="text-2xl font-bold text-blue-600 dark:text-white mb-6">
+          Cálculo de Aviso Prévio
+        </h2>
+        <form>
+          <!-- Conteúdo do formulário de Aviso Prévio -->
+        </form>
+      </div>
+      <!-- FIM DO CÁLCULO DE AVISO PRÉVIO -->
     </main>
 
     <script src="script.js"></script>

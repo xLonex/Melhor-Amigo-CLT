@@ -1,3 +1,29 @@
+// ---------- SISTEMA DE ESCOLHA DE CALCULADORA ---------- //
+document.addEventListener("DOMContentLoaded", () => {
+  const tipoCalculo = document.getElementById("tipoCalculo");
+  const boxes = document.querySelectorAll("[id^='box-']");
+
+  function mostrarBoxSelecionada() {
+    const valorSelecionado = tipoCalculo.value;
+
+    boxes.forEach((box) => {
+      box.style.display = "none";
+      box.style.opacity = "0";
+    });
+
+    const boxSelecionada = document.getElementById(`box-${valorSelecionado}`);
+    if (boxSelecionada) {
+      boxSelecionada.style.display = "block";
+      setTimeout(() => {
+        boxSelecionada.style.opacity = "1";
+      }, 10);
+    }
+  }
+
+  tipoCalculo.addEventListener("change", mostrarBoxSelecionada);
+  mostrarBoxSelecionada();
+});
+// ---------- CÁLCULADORA DE RESCISÃO ---------- //
 // Função para formatar valores monetários nos inputs
 function formatarMoeda(event) {
   const input = event.target;
@@ -336,3 +362,5 @@ function formatarLabel(key) {
 function formatarMoedaResultado(valor) {
   return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
+
+// ---------- CÁLCULADORA DE 13º SALÁRIO ------ //
